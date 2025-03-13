@@ -11,9 +11,8 @@ import {
   Search,
   Bell,
   User,
-  Wrench,
-  Zap,
 } from "lucide-react";
+import { Logo } from "../components/Logo";
 
 const DashboardScreen = () => {
   const categories = [
@@ -29,48 +28,42 @@ const DashboardScreen = () => {
       issue: "Screen Replacement",
       status: "In Progress",
       icon: Clock,
-      statusColor: "text-yellow-500",
+      badgeClass: "status-badge status-badge-progress",
     },
     {
       device: "MacBook Pro",
       issue: "Battery Service",
       status: "Completed",
       icon: CheckCircle,
-      statusColor: "text-green-500",
+      badgeClass: "status-badge status-badge-completed",
     },
     {
       device: "Samsung TV",
       issue: "Power Issue",
       status: "Pending",
       icon: AlertCircle,
-      statusColor: "text-red-500",
+      badgeClass: "status-badge status-badge-pending",
     },
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-gradient-to-r from-cyan-500 to-violet-500 p-6 pb-24">
+      <div className="bg-violet-600 p-6 pb-24">
         <div className="flex justify-between items-center mb-8">
           <div className="flex items-center gap-3">
-            <div className="relative w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-lg">
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 flex items-center justify-center opacity-20"
-              >
-                <Wrench size={20} className="text-cyan-500" />
-              </motion.div>
+            <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
+              <Logo size={24} className="text-violet-600" />
             </div>
             <div>
               <h1 className="text-white text-2xl font-bold">ElektroniCare</h1>
-              <p className="text-cyan-50">Welcome back, Alex!</p>
+              <p className="text-violet-100">Welcome back, Alex!</p>
             </div>
           </div>
           <div className="flex gap-4">
-            <button className="p-2 text-white">
+            <button className="p-2 text-white hover:bg-violet-500 rounded-lg transition-colors">
               <Bell size={24} />
             </button>
-            <button className="p-2 text-white">
+            <button className="p-2 text-white hover:bg-violet-500 rounded-lg transition-colors">
               <User size={24} />
             </button>
           </div>
@@ -81,7 +74,7 @@ const DashboardScreen = () => {
           <input
             type="text"
             placeholder="Search for repair services..."
-            className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/10 text-white placeholder-white/60 border border-white/20 focus:outline-none focus:bg-white/20"
+            className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/10 text-white placeholder-violet-200 border border-violet-400/20 focus:outline-none focus:bg-white/20"
           />
         </div>
       </div>
@@ -90,9 +83,11 @@ const DashboardScreen = () => {
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="bg-white rounded-2xl p-6 shadow-lg shadow-cyan-500/10"
+          className="bg-white rounded-2xl p-6 shadow-lg"
         >
-          <h2 className="text-lg font-semibold mb-4">Repair Services</h2>
+          <h2 className="text-lg font-semibold mb-4 text-gray-900">
+            Repair Services
+          </h2>
           <div className="grid grid-cols-4 gap-4">
             {categories.map((category, index) => (
               <motion.button
@@ -102,7 +97,7 @@ const DashboardScreen = () => {
                 transition={{ delay: index * 0.1 }}
                 className="flex flex-col items-center gap-2"
               >
-                <div className="w-14 h-14 rounded-full bg-cyan-50 flex items-center justify-center text-cyan-500">
+                <div className="w-14 h-14 rounded-full bg-violet-50 flex items-center justify-center text-violet-600">
                   {React.createElement(category.icon, { size: 24 })}
                 </div>
                 <span className="text-sm text-gray-600">{category.name}</span>
@@ -112,7 +107,9 @@ const DashboardScreen = () => {
         </motion.div>
 
         <div className="mt-8">
-          <h2 className="text-lg font-semibold mb-4">Recent Repairs</h2>
+          <h2 className="text-lg font-semibold mb-4 text-gray-900">
+            Recent Repairs
+          </h2>
           <div className="space-y-4">
             {repairs.map((repair, index) => (
               <motion.div
@@ -124,14 +121,16 @@ const DashboardScreen = () => {
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="font-semibold">{repair.device}</h3>
+                    <h3 className="font-semibold text-gray-900">
+                      {repair.device}
+                    </h3>
                     <p className="text-sm text-gray-600">{repair.issue}</p>
                   </div>
-                  <div
-                    className={`flex items-center gap-2 ${repair.statusColor}`}
-                  >
-                    {React.createElement(repair.icon, { size: 18 })}
-                    <span className="text-sm">{repair.status}</span>
+                  <div className={repair.badgeClass}>
+                    <span className="flex items-center gap-1.5">
+                      {React.createElement(repair.icon, { size: 16 })}
+                      {repair.status}
+                    </span>
                   </div>
                 </div>
               </motion.div>
@@ -144,4 +143,3 @@ const DashboardScreen = () => {
 };
 
 export default DashboardScreen;
-

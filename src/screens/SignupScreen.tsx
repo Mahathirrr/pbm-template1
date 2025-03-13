@@ -9,6 +9,7 @@ import {
   Eye,
   EyeOff,
 } from "lucide-react";
+import { Logo } from "../components/Logo";
 
 const SignupScreen = () => {
   const navigate = useNavigate();
@@ -29,8 +30,11 @@ const SignupScreen = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-8"
+        className="mb-8 text-center"
       >
+        <div className="flex justify-center mb-6">
+          <Logo size={48} className="text-violet-600" />
+        </div>
         <h1 className="text-3xl font-bold mb-2">Create Account</h1>
         <p className="text-gray-600">Join ElektroniCare today</p>
       </motion.div>
@@ -46,14 +50,13 @@ const SignupScreen = () => {
             Full Name
           </label>
           <div className="relative">
-            <UserRound
-              className="absolute left-4 top-3.5 text-gray-400"
-              size={20}
-            />
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-500">
+              <UserRound size={20} />
+            </div>
             <input
               type="text"
               placeholder="Enter your full name"
-              className="w-full p-3 pl-12 rounded-xl border border-gray-300 focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all"
+              className="w-full py-3 px-12 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
             />
           </div>
         </div>
@@ -63,11 +66,13 @@ const SignupScreen = () => {
             Email
           </label>
           <div className="relative">
-            <Mail className="absolute left-4 top-3.5 text-gray-400" size={20} />
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-500">
+              <Mail size={20} />
+            </div>
             <input
               type="email"
               placeholder="Enter your email"
-              className="w-full p-3 pl-12 rounded-xl border border-gray-300 focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all"
+              className="w-full py-3 px-12 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
             />
           </div>
         </div>
@@ -77,18 +82,18 @@ const SignupScreen = () => {
             Password
           </label>
           <div className="relative">
-            <LockKeyhole
-              className="absolute left-4 top-3.5 text-gray-400"
-              size={20}
-            />
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-500">
+              <LockKeyhole size={20} />
+            </div>
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Create a password"
-              className="w-full p-3 pl-12 pr-12 rounded-xl border border-gray-300 focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all"
+              className="w-full py-3 px-12 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
             />
             <button
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-4 top-3.5 text-gray-400 hover:text-gray-600"
+              className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700"
+              type="button"
             >
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
@@ -97,7 +102,7 @@ const SignupScreen = () => {
 
         <motion.button
           whileTap={{ scale: 0.98 }}
-          className="w-full p-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium shadow-md hover:shadow-lg transition-all"
+          className="w-full py-3 bg-violet-600 text-white font-medium rounded-md shadow-sm hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500"
           onClick={() => navigate("/dashboard")}
         >
           Create Account
@@ -107,7 +112,7 @@ const SignupScreen = () => {
           Already have an account?{" "}
           <button
             onClick={() => navigate("/login")}
-            className="text-cyan-600 font-semibold hover:text-cyan-700"
+            className="text-violet-600 font-semibold hover:text-violet-700"
           >
             Sign In
           </button>
@@ -118,4 +123,3 @@ const SignupScreen = () => {
 };
 
 export default SignupScreen;
-

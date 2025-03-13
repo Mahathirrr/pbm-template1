@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import { Smartphone, Laptop, Tv, ChevronRight } from 'lucide-react';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { Smartphone, Laptop, Tv, Headphones, ChevronRight } from "lucide-react";
 
 const slides = [
   {
     icon: Smartphone,
     title: "Phone Repairs",
-    description: "Expert repairs for all smartphone brands with genuine parts"
+    description: "Expert repairs for all smartphone brands with genuine parts",
   },
   {
     icon: Laptop,
     title: "Laptop Services",
-    description: "Professional laptop repair and maintenance services"
+    description: "Professional laptop repair and maintenance services",
   },
   {
     icon: Tv,
-    title: "Electronics Fix",
-    description: "Specialized repair for all your electronic devices"
-  }
+    title: "TV Repairs",
+    description: "Specialized repair for all your TV devices",
+  },
 ];
 
 const OnboardingScreen = () => {
@@ -27,14 +27,14 @@ const OnboardingScreen = () => {
 
   const nextSlide = () => {
     if (currentSlide === slides.length - 1) {
-      navigate('/welcome');
+      navigate("/welcome");
     } else {
-      setCurrentSlide(prev => prev + 1);
+      setCurrentSlide((prev) => prev + 1);
     }
   };
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col bg-gray-50">
       <div className="flex-1 relative overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
@@ -46,9 +46,11 @@ const OnboardingScreen = () => {
           >
             {React.createElement(slides[currentSlide].icon, {
               size: 120,
-              className: "text-blue-500 mb-8"
+              className: "text-violet-600 mb-8", // Changed from blue-500 to violet-600
             })}
-            <h2 className="text-2xl font-bold mb-4">{slides[currentSlide].title}</h2>
+            <h2 className="text-2xl font-bold mb-4 text-gray-800">
+              {slides[currentSlide].title}
+            </h2>
             <p className="text-gray-600">{slides[currentSlide].description}</p>
           </motion.div>
         </AnimatePresence>
@@ -60,7 +62,7 @@ const OnboardingScreen = () => {
             <div
               key={index}
               className={`w-2 h-2 rounded-full mx-1 ${
-                index === currentSlide ? 'bg-blue-500' : 'bg-gray-300'
+                index === currentSlide ? "bg-violet-600" : "bg-gray-300"
               }`}
             />
           ))}
@@ -69,14 +71,15 @@ const OnboardingScreen = () => {
         <motion.button
           whileTap={{ scale: 0.95 }}
           onClick={nextSlide}
-          className="w-full bg-blue-500 text-white py-4 rounded-lg font-semibold flex items-center justify-center"
+          className="primary-button flex items-center justify-center"
         >
-          {currentSlide === slides.length - 1 ? 'Get Started' : 'Next'}
+          {currentSlide === slides.length - 1 ? "Get Started" : "Next"}
           <ChevronRight className="ml-2" size={20} />
         </motion.button>
       </div>
     </div>
   );
-}
+};
 
 export default OnboardingScreen;
+

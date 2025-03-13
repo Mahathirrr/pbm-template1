@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Mail, LockKeyhole, ArrowLeft, Eye, EyeOff } from "lucide-react";
+import { Logo } from "../components/Logo";
 
 const LoginScreen = () => {
   const navigate = useNavigate();
@@ -22,8 +23,11 @@ const LoginScreen = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-8"
+        className="mb-8 text-center"
       >
+        <div className="flex justify-center mb-6">
+          <Logo size={48} className="text-violet-600" />
+        </div>
         <h1 className="text-3xl font-bold mb-2">Welcome Back!</h1>
         <p className="text-gray-600">Sign in to continue with ElektroniCare</p>
       </motion.div>
@@ -39,11 +43,13 @@ const LoginScreen = () => {
             Email
           </label>
           <div className="relative">
-            <Mail className="absolute left-4 top-3.5 text-gray-400" size={20} />
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-500">
+              <Mail size={20} />
+            </div>
             <input
               type="email"
               placeholder="Enter your email"
-              className="w-full p-3 pl-12 rounded-xl border border-gray-300 focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all"
+              className="w-full py-3 px-12 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
             />
           </div>
         </div>
@@ -53,18 +59,18 @@ const LoginScreen = () => {
             Password
           </label>
           <div className="relative">
-            <LockKeyhole
-              className="absolute left-4 top-3.5 text-gray-400"
-              size={20}
-            />
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-500">
+              <LockKeyhole size={20} />
+            </div>
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Enter your password"
-              className="w-full p-3 pl-12 pr-12 rounded-xl border border-gray-300 focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all"
+              className="w-full py-3 px-12 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
             />
             <button
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-4 top-3.5 text-gray-400 hover:text-gray-600"
+              className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700"
+              type="button"
             >
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
@@ -72,14 +78,14 @@ const LoginScreen = () => {
         </div>
 
         <div className="flex justify-end">
-          <button className="text-sm text-cyan-600 hover:text-cyan-700">
+          <button className="text-sm text-violet-600 hover:text-violet-700">
             Forgot password?
           </button>
         </div>
 
         <motion.button
           whileTap={{ scale: 0.98 }}
-          className="w-full p-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium shadow-md hover:shadow-lg transition-all"
+          className="w-full py-3 bg-violet-600 text-white font-medium rounded-md shadow-sm hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500"
           onClick={() => navigate("/dashboard")}
         >
           Sign In
@@ -89,7 +95,7 @@ const LoginScreen = () => {
           Don't have an account?{" "}
           <button
             onClick={() => navigate("/signup")}
-            className="text-cyan-600 font-semibold hover:text-cyan-700"
+            className="text-violet-600 font-semibold hover:text-violet-700"
           >
             Sign Up
           </button>
@@ -100,24 +106,3 @@ const LoginScreen = () => {
 };
 
 export default LoginScreen;
-
-// CSS untuk ditambahkan ke file CSS global Anda
-/*
-.bg-gradient-to-br {
-  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
-}
-
-.from-blue-500 {
-  --tw-gradient-from: #3b82f6;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(59, 130, 246, 0));
-}
-
-.via-cyan-400 {
-  --tw-gradient-stops: var(--tw-gradient-from), #22d3ee, var(--tw-gradient-to, rgba(34, 211, 238, 0));
-}
-
-.to-indigo-600 {
-  --tw-gradient-to: #4f46e5;
-}
-*/
-
