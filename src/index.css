@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -12,7 +12,7 @@
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   @apply bg-gray-50;
 }
 
@@ -29,11 +29,9 @@ body {
 }
 
 .primary-button {
-  @apply w-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white py-4 rounded-xl font-semibold 
-  shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30 transition-all duration-200;
+  @apply w-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white py-4 rounded-xl font-semibold shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30 transition-all duration-200;
 }
 
 .secondary-button {
-  @apply w-full bg-white border-2 border-cyan-500 text-cyan-600 py-4 rounded-xl font-semibold
-  hover:bg-cyan-50 transition-all duration-200;
+  @apply w-full bg-white border-2 border-cyan-500 text-cyan-600 py-4 rounded-xl font-semibold hover:bg-cyan-50 transition-all duration-200;
 }

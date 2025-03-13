@@ -1,40 +1,49 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { 
-  Smartphone, Laptop, Tv, Headphones, 
-  Clock, CheckCircle, AlertCircle, 
-  Search, Bell, User, Wrench, Zap
-} from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  Smartphone,
+  Laptop,
+  Tv,
+  Headphones,
+  Clock,
+  CheckCircle,
+  AlertCircle,
+  Search,
+  Bell,
+  User,
+  Wrench,
+  Zap,
+} from "lucide-react";
 
 const DashboardScreen = () => {
   const categories = [
-    { icon: Smartphone, name: 'Phones' },
-    { icon: Laptop, name: 'Laptops' },
-    { icon: Tv, name: 'TVs' },
-    { icon: Headphones, name: 'Audio' },
+    { icon: Smartphone, name: "Phones" },
+    { icon: Laptop, name: "Laptops" },
+    { icon: Tv, name: "TVs" },
+    { icon: Headphones, name: "Audio" },
   ];
 
   const repairs = [
     {
-      device: 'iPhone 13',
-      issue: 'Screen Replacement',
-      status: 'In Progress',
+      device: "iPhone 13",
+      issue: "Screen Replacement",
+      status: "In Progress",
       icon: Clock,
-      statusColor: 'text-yellow-500',
+      statusColor: "text-yellow-500",
     },
     {
-      device: 'MacBook Pro',
-      issue: 'Battery Service',
-      status: 'Completed',
+      device: "MacBook Pro",
+      issue: "Battery Service",
+      status: "Completed",
       icon: CheckCircle,
-      statusColor: 'text-green-500',
+      statusColor: "text-green-500",
     },
     {
-      device: 'Samsung TV',
-      issue: 'Power Issue',
-      status: 'Pending',
+      device: "Samsung TV",
+      issue: "Power Issue",
+      status: "Pending",
       icon: AlertCircle,
-      statusColor: 'text-red-500',
+      statusColor: "text-red-500",
     },
   ];
 
@@ -44,16 +53,6 @@ const DashboardScreen = () => {
         <div className="flex justify-between items-center mb-8">
           <div className="flex items-center gap-3">
             <div className="relative w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-lg">
-              <motion.div
-                animate={{ 
-                  scale: [1, 1.1, 1],
-                  opacity: [1, 0.8, 1]
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="relative z-10"
-              >
-                <Zap size={20} className="text-cyan-500" />
-              </motion.div>
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -88,7 +87,7 @@ const DashboardScreen = () => {
       </div>
 
       <div className="px-6 -mt-20">
-        <motion.div 
+        <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           className="bg-white rounded-2xl p-6 shadow-lg shadow-cyan-500/10"
@@ -128,7 +127,9 @@ const DashboardScreen = () => {
                     <h3 className="font-semibold">{repair.device}</h3>
                     <p className="text-sm text-gray-600">{repair.issue}</p>
                   </div>
-                  <div className={`flex items-center gap-2 ${repair.statusColor}`}>
+                  <div
+                    className={`flex items-center gap-2 ${repair.statusColor}`}
+                  >
                     {React.createElement(repair.icon, { size: 18 })}
                     <span className="text-sm">{repair.status}</span>
                   </div>
@@ -140,6 +141,7 @@ const DashboardScreen = () => {
       </div>
     </div>
   );
-}
+};
 
 export default DashboardScreen;
+

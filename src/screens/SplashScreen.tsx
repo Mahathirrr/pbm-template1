@@ -66,18 +66,6 @@ const SplashScreen = () => {
           >
             <div className="relative w-16 h-16 flex items-center justify-center">
               {/* Rotating circuits animation */}
-              <motion.div
-                initial={{ rotate: 0, opacity: 0.4 }}
-                animate={{ rotate: 360, opacity: [0.4, 0.7, 0.4] }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0"
-              >
-                <CircuitBoard
-                  size={64}
-                  className="text-cyan-500 absolute"
-                  style={{ top: "-5px", left: "-5px" }}
-                />
-              </motion.div>
 
               {/* CPU icon in the center */}
               <motion.div
